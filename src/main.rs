@@ -3,6 +3,17 @@ mod board;
 use std::io;
 
 fn main() {
+    let (width, height) = fetch_dimesnions();
+    let board = board::create_board(width, height);
+    board.print_self();
+}
+
+/**  
+ * Grabs dimensions of the board from the user
+ * and then tries to convert that into u32 types
+ * required by Board struct
+ */
+fn fetch_dimesnions() -> (u32, u32) {
     println!("Provide width of the board");
 
     // Preparing variables to get init parameters from user
@@ -36,6 +47,5 @@ fn main() {
         panic!("Height must be a positive number");
     }
 
-    let board = board::create_board(width, height);
-    board.print_self();
+    return (width, height);
 }
